@@ -35,7 +35,7 @@ provider "shadeform" {
 You can also set the API key via environment variable:
 
 ```bash
-export SHADEFORM_API_KEY="your-shadeform-api-key"
+export SHADEFORM_API_KEY="YOU_API_KEY"
 ```
 
 If you do that, make sure to set the `api_key` to `""`

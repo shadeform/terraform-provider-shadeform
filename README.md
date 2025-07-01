@@ -66,7 +66,7 @@ resource "shadeform_volume" "test-volume" {
 ```
 
 > **_NOTE:_** Instances can take anywhere from 1 - 15 minutes on average to spin up with some evening taking upwards of 30-40 minutes.
-The `terraform apply` command wont finish until the instances are active (or errored out)
+The `terraform apply` command won't finish until the instances are active (or errored out)
 
 ## Requirements
 

@@ -241,7 +241,7 @@ func (r *InstanceResource) Create(ctx context.Context, req resource.CreateReques
 	ctx, cancel := context.WithTimeout(ctx, createTimeout)
 	defer cancel()
 
-	if err := pollInstanceStatus(ctx, r.client, plan.Name.ValueString(), instanceID, "active", 15*time.Second); err != nil {
+	if err := pollInstanceStatus(ctx, r.client, plan.Name.ValueString(), instanceID, 15*time.Second); err != nil {
 		resp.Diagnostics.AddError(
 			"Instance not ready",
 			fmt.Sprintf("timed out waiting for %s to become active: %s", instanceID, err),
@@ -631,7 +631,6 @@ func pollInstanceStatus(
 	c *provider_shadeform.Client,
 	name string,
 	id string,
-	want string,
 	interval time.Duration,
 ) error {
 	ticker := time.NewTicker(interval)
@@ -650,8 +649,10 @@ func pollInstanceStatus(
 			status, _ := info["status"].(string)
 			tflog.Debug(ctx, fmt.Sprintf("instance [name: %s, id: %s] status=%s", name, id, status))
 
-			if status == want {
+			if status == "active" {
 				return nil // success
+			} else if status == "error" {
+				return fmt.Errorf("instance %s is in error state", id)
 			}
 		}
 	}

@@ -65,12 +65,8 @@ resource "shadeform_volume" "test-volume" {
 }
 ```
 
-## Examples
-
-See the [examples](./examples/) directory for complete working configurations:
-
-- [Basic Example](./examples/basic/) - Simple instance and volume creation
-- [Advanced Example](./examples/advanced/) - Data source usage and multi-cloud deployments
+> **_NOTE:_** Instances can take anywhere from 1 - 15 minutes on average to spin up with some evening taking upwards of 30-40 minutes.
+The `terraform apply` command wont finish until the instances are active (or errored out)
 
 ## Requirements
 

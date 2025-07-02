@@ -29,7 +29,6 @@ resource "shadeform_instance" "test-instance" {
   cloud              = "scaleway"
   region             = "paris-france-1"
   shade_instance_type = "H100"
-  shade_cloud        = true
   name               = "terraform-test-instance"
 } 
 ```
@@ -42,7 +41,6 @@ resource "shadeform_instance" "test-instance" {
 - `cloud` (String) The cloud provider.
 - `name` (String) The name of the instance.
 - `region` (String) The region where the instance will be deployed.
-- `shade_cloud` (Boolean) Whether to use Shade Cloud or linked cloud account. This is usually true.
 - `shade_instance_type` (String) The Shadeform standardized instance type.
 
 ### Optional
@@ -50,6 +48,7 @@ resource "shadeform_instance" "test-instance" {
 - `os` (String) The operating system of the instance.
 - `template_id` (String) The ID of the template to use for this instance.
 - `volume_ids` (List of String) List of volume IDs to be mounted. Currently only supports 1 volume at a time.
+- `shade_cloud` (Boolean) Whether to use Shade Cloud or linked cloud account. This defaults to true.
 
 ### Read-Only
 

@@ -49,7 +49,6 @@ resource "shadeform_instance" "test-instance" {
   cloud              = "scaleway"
   region             = "paris-france-1"
   shade_instance_type = "H100"
-  shade_cloud        = true
   name               = "terraform-test-instance"
 } 
 ```

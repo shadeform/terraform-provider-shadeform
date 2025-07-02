@@ -79,7 +79,7 @@ func (r *InstanceResource) Schema(ctx context.Context, _ resource.SchemaRequest,
 			},
 			"shade_cloud": schema.BoolAttribute{
 				Description: "Whether to use Shade Cloud or linked cloud account. This is usually true.",
-				Required:    true,
+				Optional:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "The name of the instance.",
@@ -183,7 +183,6 @@ func (r *InstanceResource) Create(ctx context.Context, req resource.CreateReques
 		"cloud":               plan.Cloud.ValueString(),
 		"region":              plan.Region.ValueString(),
 		"shade_instance_type": plan.ShadeInstanceType.ValueString(),
-		"shade_cloud":         plan.ShadeCloud.ValueBool(),
 		"name":                plan.Name.ValueString(),
 	}
 
@@ -197,6 +196,10 @@ func (r *InstanceResource) Create(ctx context.Context, req resource.CreateReques
 
 	if !plan.SshKeyId.IsNull() && !plan.SshKeyId.IsUnknown() {
 		requestBody["ssh_key_id"] = plan.SshKeyId.ValueString()
+	}
+
+	if !plan.ShadeCloud.IsNull() && !plan.ShadeCloud.IsUnknown() {
+		requestBody["shade_cloud"] = plan.ShadeCloud.ValueBool()
 	}
 
 	// Add volume_ids if specified

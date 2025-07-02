@@ -39,7 +39,6 @@ resource "shadeform_instance" "test-instance" {
   region = "helsinki-finland-2"
   shade_instance_type = "H200"
   name = "terraform-test-instance"
-  shade_cloud = true
   volume_ids = [shadeform_volume.test-volume.id]
 }
 ```

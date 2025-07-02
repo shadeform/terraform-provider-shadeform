@@ -38,7 +38,6 @@ resource "shadeform_instance" "from_data_source" {
   region              = data.shadeform_instance_types.available_scaleway.instance_types[0].availability[0].region
   shade_instance_type = data.shadeform_instance_types.available_scaleway.instance_types[0].shade_instance_type
   name                = "instance-from-data-source"
-  shade_cloud         = true
 }
 ```
 

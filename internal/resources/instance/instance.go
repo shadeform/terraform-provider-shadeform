@@ -259,9 +259,6 @@ func (r *InstanceResource) Create(ctx context.Context, req resource.CreateReques
 		return
 	}
 
-	fmt.Println("instanceInfo")
-	fmt.Println(instanceInfo)
-
 	// Set all fields from the API response
 	plan.Id = types.StringValue(instanceID)
 	if cloud, ok := instanceInfo["cloud"].(string); ok {

@@ -80,6 +80,7 @@ func (r *InstanceResource) Schema(ctx context.Context, _ resource.SchemaRequest,
 			"shade_cloud": schema.BoolAttribute{
 				Description: "Whether to use Shade Cloud or linked cloud account. This is usually true.",
 				Optional:    true,
+				Computed:    true,
 			},
 			"name": schema.StringAttribute{
 				Description: "The name of the instance.",

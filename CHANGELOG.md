@@ -32,3 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated instance resource documentation
 - Updated instance_types data source documentation
 - Updated README
+
+## v0.1.2
+
+### Added
+- Updated instance resource documentation
+- Updated volume resource documentation
+- Updated README

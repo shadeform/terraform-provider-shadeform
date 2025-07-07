@@ -8,7 +8,8 @@ description: |-
 
 # shadeform_volume (Resource)
 
-Manages a Shadeform storage volume.
+Manages a Shadeform storage volume. Volumes provide persistent block storage that can be attached to instances for storing data independently of the instance lifecycle.
+For more information, see our [public docs](https://docs.shadeform.ai/guides/attachvolume).
 
 ## Example Usage
 

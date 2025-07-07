@@ -3,7 +3,7 @@
 [![Terraform Registry](https://img.shields.io/badge/terraform-registry-blue.svg)](https://registry.terraform.io/providers/shadeform/shadeform)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Terraform provider for managing GPU instances and storage volumes on Shadeform, a unified platform for deploying and managing cloud GPUs across multiple cloud providers.
+A Terraform provider for managing GPU instances and storage volumes on Shadeform, a unified platform for deploying and managing cloud GPUs across multiple cloud providers. For more information about what Shadeform is and how to use it, visit our [public docs](https://docs.shadeform.ai/getting-started/introduction).
 
 ## Quick Start
 
@@ -39,6 +39,25 @@ export SHADEFORM_API_KEY="YOUR_API_KEY"
 ```
 
 If you do that, make sure to set the `api_key` to `""`
+
+#### Commands
+
+```bash
+# Initialize Terraform
+terraform init
+
+# Plan the changes
+terraform plan
+
+# Apply the changes
+terraform apply
+
+# Check the state
+terraform show
+
+# Destroy the resources
+terraform destroy
+```
 
 ### Basic Usage
 

@@ -45,10 +45,8 @@ resource "shadeform_instance" "test-instance" {
 
 ### Optional
 
-- `os` (String) The operating system of the instance.
-- `template_id` (String) The ID of the template to use for this instance.
+- `os` (String) The operating system of the instance. If OS is not provided, it will default to the default OS for the cloud provider.
 - `volume_ids` (List of String) List of volume IDs to be mounted. Currently only supports 1 volume at a time.
-- `shade_cloud` (Boolean) Whether to use Shade Cloud or linked cloud account. This defaults to true.
 - `ssh_key_id` (String) The ID of the SSH key to use for this instance.
 
 ### Read-Only

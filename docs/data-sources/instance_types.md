@@ -32,8 +32,10 @@ data "shadeform_instance_types" "available_scaleway" {
   sort                = "price"
 }
 
-# Create the cheapest available scaleway instance
+# Create an instance using the cheapest available scaleway instance (only if there is at least one instance available)
 resource "shadeform_instance" "from_data_source" {
+  count               = length(data.shadeform_instance_types.available_scaleway.instance_types) > 0 ? 1 : 0
+
   cloud               = data.shadeform_instance_types.available_scaleway.instance_types[0].cloud
   region              = data.shadeform_instance_types.available_scaleway.instance_types[0].availability[0].region
   shade_instance_type = data.shadeform_instance_types.available_scaleway.instance_types[0].shade_instance_type

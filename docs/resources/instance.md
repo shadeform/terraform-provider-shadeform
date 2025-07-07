@@ -49,7 +49,17 @@ resource "shadeform_instance" "test-instance" {
 - `template_id` (String) The ID of the template to use for this instance.
 - `volume_ids` (List of String) List of volume IDs to be mounted. Currently only supports 1 volume at a time.
 - `shade_cloud` (Boolean) Whether to use Shade Cloud or linked cloud account. This defaults to true.
+- `ssh_key_id` (String) The ID of the SSH key to use for this instance.
 
 ### Read-Only
 
 - `id` (String) The unique identifier for the instance.
+- `cloud_instance_type` (String) The type of the instance in the cloud provider.
+- `cloud_assigned_id` (String) The ID of the instance in the cloud provider.
+- `ip` (String) The IP address of the instance.
+- `ssh_user` (String) The user to use for SSH access to the instance.
+- `ssh_port` (Number) The port to use for SSH access to the instance.
+- `status` (String) The status of the instance.
+- `cost_estimate` (String) The cost estimate so far for the instance.
+- `hourly_price` (String) The hourly price of the instance.
+- `created_at` (String) The date and time the instance was created.

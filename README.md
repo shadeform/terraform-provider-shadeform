@@ -28,14 +28,14 @@ Configure the provider with your Shadeform API key:
 
 ```hcl
 provider "shadeform" {
-  api_key = "YOU_API_KEY"
+  api_key = "YOUR_API_KEY"
 }
 ```
 
 You can also set the API key via environment variable:
 
 ```bash
-export SHADEFORM_API_KEY="YOU_API_KEY"
+export SHADEFORM_API_KEY="YOUR_API_KEY"
 ```
 
 If you do that, make sure to set the `api_key` to `""`

@@ -246,9 +246,33 @@ func (r *InstanceResource) Create(ctx context.Context, req resource.CreateReques
 	defer cancel()
 
 	if err := pollInstanceStatus(ctx, r.client, plan.Name.ValueString(), instanceID, 15*time.Second); err != nil {
+		// If polling failed due to timeout, attempt to clean up the instance
+		if ctx.Err() == context.DeadlineExceeded {
+			tflog.Warn(ctx, fmt.Sprintf("Instance creation timed out, attempting to clean up instance %s", instanceID))
+
+			// Attempt to delete the instance
+			deleteErr := r.client.DeleteInstance(instanceID)
+			if deleteErr != nil {
+				// If deletion fails, return a comprehensive error
+				resp.Diagnostics.AddError(
+					"Instance creation failed and cleanup failed",
+					fmt.Sprintf("Instance %s creation timed out and could not be deleted: %s. Manual cleanup may be required.", instanceID, deleteErr.Error()),
+				)
+				return
+			}
+
+			// If deletion succeeds, return a timeout error
+			resp.Diagnostics.AddError(
+				"Instance creation timed out",
+				fmt.Sprintf("Instance %s creation timed out and was automatically deleted. Please try again or check your configuration.", instanceID),
+			)
+			return
+		}
+
+		// For other errors (like instance in error state), just return the original error
 		resp.Diagnostics.AddError(
 			"Instance not ready",
-			fmt.Sprintf("timed out waiting for %s to become active: %s", instanceID, err),
+			fmt.Sprintf("failed waiting for %s to become active: %s", instanceID, err),
 		)
 		return
 	}

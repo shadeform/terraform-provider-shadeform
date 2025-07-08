@@ -39,3 +39,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated instance resource documentation
 - Updated volume resource documentation
 - Updated README
+
+## v0.1.3
+
+### Updated
+
+- If the default timeout of 60 minutes is reached and an instance hasn't become active yet,
+we will now attempt to delete the instance before returning
